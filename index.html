@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Exo Json</title>
 </head>
+
 <body>
 
-<button type="button" name="button" onclick="parser()">Parser le JSON</button>
+    <button type="button" name="button" onclick="parser()">Parser le JSON</button>
 
-<div class="ici">
+    <div class="ici"></div>
 
-</div>
-
-<script type="text/javascript">
-  var tab ='{"stagiaires":[{"prenom":"Camille","nom":"Theil" },{"prenom":"Alex","nom":"Tuil" },{"prenom":"Johanna","nom":"Bouzige" },{"prenom":"Christophe","nom":"Bello" },{"prenom":"Abdelhakim","nom":"El Baza" },{"prenom":"Nabil","nom":"Ghedjati"},{"prenom":"Michael","nom":"Gable"},{"prenom":"Samir","nom":"Ben Sadi"},{"prenom":"Sandrine","nom":"Roumejon" },{"prenom":"David","nom":"Longuet" },{"prenom":"Éric","nom":"Guegan" },{"prenom":"Florian","nom":"Durano" },{"prenom":"Jean-Charles","nom":"Kormann"},{"prenom":"Kévin","nom":"Forestier"},{"prenom":"Mathieu","nom":"Coynet"},{"prenom":"Régis","nom":"Sarrasin"},{"prenom":"Romain","nom":"Quet"},{"prenom":"Sylvain","nom":"Archilla" } ]}';
-
-
-  function parser() {
-    var  tableau = JSON.parse(tab);
-
-    console.log(tableau.stagiaires.length);
-    // console.log(tableau.stagiaires[3]);
-
-    // document.getElementById('ici').innerHTML = "<table><tr><th>Prenom</th><th>Nom</th><tr></table>";
-
-    for (var i = 0; i < tableau.stagiaires.length; i++) {
-      var text = "<h1>" + tableau.stagiaires[i].prenom + " " + tableau.stagiaires[i].nom + "</h1>";
-      // document.getElementsByClassName('ici').appendChild = text;
-      console.log(text);
-    }
-
-    // document.getElementsByClassName('ici').innerHTML = tableau.stagiaires;
-  }
+    <script type="text/javascript">
+        var tab =
+            '{"stagiaires":[{"prenom":"Camille","nom":"Theil" },{"prenom":"Alex","nom":"Tuil" },{"prenom":"Johanna","nom":"Bouzige" },{"prenom":"Christophe","nom":"Bello" },{"prenom":"Abdelhakim","nom":"El Baza" },{"prenom":"Nabil","nom":"Ghedjati"},{"prenom":"Michael","nom":"Gable"},{"prenom":"Samir","nom":"Ben Sadi"},{"prenom":"Sandrine","nom":"Roumejon" },{"prenom":"David","nom":"Longuet" },{"prenom":"Éric","nom":"Guegan" },{"prenom":"Florian","nom":"Durano" },{"prenom":"Jean-Charles","nom":"Kormann"},{"prenom":"Kévin","nom":"Forestier"},{"prenom":"Mathieu","nom":"Coynet"},{"prenom":"Régis","nom":"Sarrasin"},{"prenom":"Romain","nom":"Quet"},{"prenom":"Sylvain","nom":"Archilla" } ]}';
 
 
-</script>
+        function parser() {
+            var tableau = JSON.parse(tab);
+
+            console.log(tableau.stagiaires.length);
+            // console.log(tableau.stagiaires[3]);
+
+            // document.getElementById('ici').innerHTML = "<table><tr><th>Prenom</th><th>Nom</th><tr></table>";
+
+            for (var i = 0; i < tableau.stagiaires.length; i++) {
+                var element  = document.createElement("h1"); // on crée l'element h1
+                var text = document.createTextNode(tableau.stagiaires[i].prenom + " " + tableau.stagiaires[i].nom); // on crée un noeud de texte
+
+                element.appendChild(text); // on fait en sorte que le noeud de texte devienne l'enfant de l'element crée en premier
+
+                document.getElementsByClassName('ici').appendChild(element); // on fait en sorte que l'element crée en premier devienne l'enfant d'un element sélectionné
+                // console.log(text);
+            }
+
+        }
+    </script>
 
 </body>
+
 </html>
