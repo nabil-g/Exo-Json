@@ -8,9 +8,37 @@
 
 <body>
 
+    <button type="button" name="button" onclick="afficher()">Parser le JSON</button>
+
+    <div id="ici"></div>
+
+    <script type="text/javascript">
+        var tab =
+            '{"stagiaires":[{"prenom":"Camille","nom":"Theil" },{"prenom":"Alex","nom":"Tuil" },{"prenom":"Johanna","nom":"Bouzige" },{"prenom":"Christophe","nom":"Bello" },{"prenom":"Abdelhakim","nom":"El Baza" },{"prenom":"Nabil","nom":"Ghedjati"},{"prenom":"Michael","nom":"Gable"},{"prenom":"Samir","nom":"Ben Sadi"},{"prenom":"Sandrine","nom":"Roumejon" },{"prenom":"David","nom":"Longuet" },{"prenom":"Éric","nom":"Guegan" },{"prenom":"Florian","nom":"Durano" },{"prenom":"Jean-Charles","nom":"Kormann"},{"prenom":"Kévin","nom":"Forestier"},{"prenom":"Mathieu","nom":"Coynet"},{"prenom":"Régis","nom":"Sarrasin"},{"prenom":"Romain","nom":"Quet"},{"prenom":"Sylvain","nom":"Archilla" } ]}';
+
+
+        function afficher() {
+            var tableau = JSON.parse(tab);
+            document.getElementById('ici').innerHTML = '<table id="table" ><tr><th>Prenom</th><th>Nom</th><tr></table>';
+
+            for (var i = 0; i < tableau.stagiaires.length; i++) {
+                var element = document.createElement("tr"); // on crée l'element
+                element.innerHTML = "<td>" + tableau.stagiaires[i].prenom + "</td><td>" + tableau.stagiaires[i].nom + "</td>"; //On ajoute le contenu
+                var table = document.getElementById('table');
+                table.appendChild(element);
+            }
+
+        }
+    </script>
+
+</body>
+
+
+<!-- <body>
+
     <button type="button" name="button" onclick="parser()">Parser le JSON</button>
 
-    <div class="ici"></div>
+    <div id="ici"></div>
 
     <script type="text/javascript">
         var tab =
@@ -21,7 +49,6 @@
             var tableau = JSON.parse(tab);
 
             console.log(tableau.stagiaires.length);
-            // console.log(tableau.stagiaires[3]);
 
             // document.getElementById('ici').innerHTML = "<table><tr><th>Prenom</th><th>Nom</th><tr></table>";
 
@@ -31,13 +58,12 @@
 
                 element.appendChild(text); // on fait en sorte que le noeud de texte devienne l'enfant de l'element crée en premier
 
-                document.getElementsByClassName('ici').appendChild(element); // on fait en sorte que l'element crée en premier devienne l'enfant d'un element sélectionné
-                // console.log(text);
+                document.getElementById('ici').appendChild(element); // on fait en sorte que l'element crée en premier devienne l'enfant d'un element sélectionné
             }
 
         }
     </script>
 
-</body>
+</body> -->
 
 </html>
